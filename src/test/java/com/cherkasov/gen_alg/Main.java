@@ -11,16 +11,16 @@ public class Main {
         //Initialization of classes that will be used
         Scanner in = new Scanner(System.in);
         Recombination recombination = new Recombination();
-        Individuals_Selection selection = new Individuals_Selection();
-        Stop_Checking stop_checking = new Stop_Checking();
+        IndividualsSelection selection = new IndividualsSelection();
+        RulesChecking rulesChecking = new RulesChecking();
         Convert convertor = new Convert();
         Mutation mutation = new Mutation();
         /*Initialization of two lists:one for input population in the way of
-        decimal system and another one for convert population into the binary system to worl with
+        decimal system and another one for convert population into the binary system to work with
         it during the entire programm
         */
-        List<Integer> intpopulation=new ArrayList<Integer>();
-        List<String> population=new ArrayList<>();
+        List<Integer> intpopulation = new ArrayList<Integer>();
+        List<String> population = new ArrayList<>();
         int size;
         //Input of initial population
         System.out.println("Number of chromosomes: ");
@@ -29,7 +29,7 @@ public class Main {
         for (int i = 0; i < size; ++i) {
             intpopulation.add(in.nextInt());
         }
-        while(!new Rules_Checking().check(intpopulation)){
+        while(!rulesChecking.check(intpopulation)){
             System.out.println("Wrong parameters!");
             System.out.println("Enter initial population: ");
             for (int i = 0; i < size; ++i) {
@@ -37,7 +37,7 @@ public class Main {
             }
         }
 
-
+        //the algorythm itself. It uses classes initialized before
         convertor.convert(intpopulation,population);
         population = recombination.crossover(population);
         population = mutation.operate(population);
@@ -47,7 +47,7 @@ public class Main {
             System.out.println(Integer.parseInt(population.get(i),2));
         }
         System.out.println("NEW");
-        while(/*!stop_checking.checking(population) &&*/ k!=300){
+        while(k != 300){
             population = recombination.crossover(population);
             population = mutation.operate(population);
             population = selection.select(size,population);
@@ -57,7 +57,11 @@ public class Main {
             }
             System.out.println("NEW");
         }
-
+        //Output of initial population
+        System.out.println("FINAL POPULATION:");
+        for(int i = 0;i<size;++i){
+            System.out.println(Integer.parseInt(population.get(i),2));
+        }
         //System.out.println(Integer.parseInt(a,2));
 
     }

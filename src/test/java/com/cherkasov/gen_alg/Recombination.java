@@ -5,15 +5,16 @@ import java.util.List;
 
 public class Recombination {
     public List crossover(List<String> population){
-        List<String> temp_parent=new ArrayList<>();
+        List<String> temp_parent = new ArrayList<>();
         int k;
-        int size=population.size();
-        for(int i=0;i<population.size();i++){
-           k=(int)(Math.random()*(population.size()));
+        int size = population.size();
+        //Creating of the list of the second parents
+        for(int i = 0;i < population.size();++i){
+           k = (int)(Math.random()*(population.size()));
             temp_parent.add(population.get(k));
         }
-
-         for(int i=0;i<size;i++){
+         //Recombination using crossingover. Duplicates are being removed
+         for(int i = 0;i < size;++i){
             population.add(population.get(i).substring(0,2)+temp_parent.get(i).substring(2));
             if(population.get(population.size()-1).equals(population.get(i)) ||
                     population.get(population.size()-1).equals(temp_parent.get(i))){
@@ -26,7 +27,7 @@ public class Recombination {
              }
         }
 
-          return  population;
+          return population;
     }
 
 }
