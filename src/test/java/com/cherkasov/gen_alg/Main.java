@@ -39,14 +39,7 @@ public class Main {
 
         //the algorythm itself. It uses classes initialized before
         convertor.convert(intpopulation,population);
-        population = recombination.crossover(population);
-        population = mutation.operate(population);
-        population = selection.select(size,population);
-        int k = 1;
-        for(int i = 0;i<size;++i){
-            System.out.println(Integer.parseInt(population.get(i),2));
-        }
-        System.out.println("NEW");
+        int k = 0;
         while(k != 300){
             population = recombination.crossover(population);
             population = mutation.operate(population);
@@ -62,7 +55,6 @@ public class Main {
         for(int i = 0;i<size;++i){
             System.out.println(Integer.parseInt(population.get(i),2));
         }
-        //System.out.println(Integer.parseInt(a,2));
 
     }
 }

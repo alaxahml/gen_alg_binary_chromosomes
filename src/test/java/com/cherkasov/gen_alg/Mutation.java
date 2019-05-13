@@ -6,13 +6,13 @@ import java.util.List;
 public class Mutation {
     public List operate(List<String> population){
         List<Integer> intpopulation = new ArrayList<>();
-        DiversityChecking stopChecking = new DiversityChecking();
+        DiversityChecking diversityChecking = new DiversityChecking();
         Function function = new Function();
         double chance;
-        if(stopChecking.checking(population)){
+        if(diversityChecking.checking(population)){
             chance = 1.0;
         }
-              else {
+        else {
             chance = 0.1;
         }
         double chance1 = Math.random()*1;

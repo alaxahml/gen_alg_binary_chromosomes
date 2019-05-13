@@ -28,7 +28,7 @@ public class IndividualsSelection {
               intpopulation.remove(minind);
           }
           newintpopulation.add(intpopulation.get(0));//notice that the maximum element was not added in the cycle
-          for(int i = 0;i < size;++i){
+          for(int i = 0;i < newintpopulation.size();++i){
               population.remove(0);
           }
 
